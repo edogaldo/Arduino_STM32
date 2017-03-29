@@ -384,7 +384,7 @@ genericSTM32F103V.menu.device_variant.STM32F103VD.upload.flash.maximum_size=3932
 genericSTM32F103V.menu.device_variant.STM32F103VD.build.ldscript=ld/stm32f103vd.ld
 
 genericSTM32F103V.menu.device_variant.STM32F103VE=STM32F103VE
-genericSTM32F103V.menu.device_variant.STM32F103VE.build.cpu_flags=-DMCU_STM32F103VE
+genericSTM32F103V.menu.device_variant.STM32F103VE.build.cpu_flags=-DMCU_STM32F103VE -DUSART_RX_BUF_SIZE=128 -DUSART_TX_BUF_SIZE=128
 genericSTM32F103V.menu.device_variant.STM32F103VE.upload.maximum_size=524288
 genericSTM32F103V.menu.device_variant.STM32F103VE.upload.ram.maximum_size=65536
 genericSTM32F103V.menu.device_variant.STM32F103VE.upload.flash.maximum_size=524288
@@ -444,7 +444,7 @@ genericSTM32F103Z.menu.device_variant.STM32F103ZD.upload.flash.maximum_size=3932
 genericSTM32F103Z.menu.device_variant.STM32F103ZD.build.ldscript=ld/stm32f103zd.ld
 
 genericSTM32F103Z.menu.device_variant.STM32F103ZE=STM32F103ZE
-genericSTM32F103Z.menu.device_variant.STM32F103ZE.build.cpu_flags=-DMCU_STM32F103ZE
+genericSTM32F103Z.menu.device_variant.STM32F103ZE.build.cpu_flags=-DMCU_STM32F103ZE -DUSART_RX_BUF_SIZE=128 -DUSART_TX_BUF_SIZE=128
 genericSTM32F103Z.menu.device_variant.STM32F103ZE.upload.maximum_size=524288
 genericSTM32F103Z.menu.device_variant.STM32F103ZE.upload.ram.maximum_size=65536
 genericSTM32F103Z.menu.device_variant.STM32F103ZE.upload.flash.maximum_size=524288
