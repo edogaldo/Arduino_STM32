@@ -155,17 +155,15 @@ extern const uint8 boardUsedPins[BOARD_NR_USED_PINS] __FLASH__ = {
 };
 
 
-#ifdef SERIAL_USB
-	DEFINE_HWSERIAL(Serial1, 1);
-	DEFINE_HWSERIAL(Serial2, 2);
-	DEFINE_HWSERIAL(Serial3, 3);
-	DEFINE_HWSERIAL_UART(Serial4, 4);
-	DEFINE_HWSERIAL_UART(Serial5, 5);
-#else
-	DEFINE_HWSERIAL(Serial, 1);
-	DEFINE_HWSERIAL(Serial1, 2);
-	DEFINE_HWSERIAL(Serial2, 3);
-	DEFINE_HWSERIAL_UART(Serial3, 4);
-	DEFINE_HWSERIAL_UART(Serial4, 5);
-#endif
+DEFINE_HWSERIAL(Serial1, 1);
+DEFINE_HWSERIAL(Serial2, 2);
+DEFINE_HWSERIAL(Serial3, 3);
+DEFINE_HWSERIAL_UART(Serial4, 4);
+DEFINE_HWSERIAL_UART(Serial5, 5);
 
+#ifdef SERIAL_USB
+#include <usb_serial.h>
+USBSerial Serial;
+#else
+HardwareSerial& Serial=Serial1;
+#endif

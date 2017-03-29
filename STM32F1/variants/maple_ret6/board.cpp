@@ -176,3 +176,6 @@ DEFINE_HWSERIAL(Serial2, 2);
 DEFINE_HWSERIAL(Serial3, 3);
 DEFINE_HWSERIAL_UART(Serial4, 4);
 DEFINE_HWSERIAL_UART(Serial5, 5);
+
+#include <usb_serial.h>
+USBSerial Serial;

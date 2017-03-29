@@ -190,11 +190,6 @@ uint8 USBSerial::getRTS(void) {
     return usb_cdcacm_get_rts();
 }
 
-#if BOARD_HAVE_SERIALUSB
-	#ifdef SERIAL_USB 
-		USBSerial Serial;
-	#endif
-#endif
 
 /*
  * Bootloader hook implementations
