@@ -72,6 +72,9 @@ public:
     uint8 getDTR();
     uint8 isConnected();
     uint8 pending();
+
+protected:
+    static bool _hasBegun;
 };
 
 #ifdef SERIAL_USB 
