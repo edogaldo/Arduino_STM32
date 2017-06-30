@@ -104,6 +104,10 @@ void USBSerial::end(void) {
 
 }
 
+USBSerial::operator bool() {
+    return usb_is_connected(USBLIB) && usb_is_configured(USBLIB) && usb_cdcacm_get_dtr();
+}
+
 size_t USBSerial::write(uint8 ch) {
 size_t n = 0;
     this->write(&ch, 1);
@@ -119,7 +123,7 @@ size_t n = 0;
 size_t USBSerial::write(const uint8 *buf, uint32 len)
 {
 size_t n = 0;
-    if (!this->isConnected() || !buf) {
+    if (!(bool)*this || !buf) {
         return 0;
     }
 
@@ -191,7 +195,7 @@ uint8 USBSerial::pending(void) {
 }
 
 uint8 USBSerial::isConnected(void) {
-    return usb_is_connected(USBLIB) && usb_is_configured(USBLIB) && usb_cdcacm_get_dtr();
+    return (bool)*this;
 }
 
 uint8 USBSerial::getDTR(void) {
@@ -202,11 +206,6 @@ uint8 USBSerial::getRTS(void) {
     return usb_cdcacm_get_rts();
 }
 
-#if BOARD_HAVE_SERIALUSB
-	#ifdef SERIAL_USB 
-		USBSerial Serial;
-	#endif
-#endif
 
 /*
  * Bootloader hook implementations

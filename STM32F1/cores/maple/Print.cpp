@@ -65,8 +65,8 @@ size_t Print::write(const void *buffer, uint32 size) {
 	return n;
 }
 
-size_t Print::print(uint8 b, int base) {
-    return print((uint64)b, base);
+size_t Print::print(uint8 b, int base, int digits) {
+    return print((uint64)b, base, digits);
 }
 
 size_t Print::print(const String &s)
@@ -82,23 +82,23 @@ size_t Print::print(const char str[]) {
     return write(str);
 }
 
-size_t Print::print(int n, int base) {
-    return print((long long)n, base);
+size_t Print::print(int n, int base, int digits) {
+    return print((long long)n, base, digits);
 }
 
-size_t Print::print(unsigned int n, int base) {
-    return print((unsigned long long)n, base);
+size_t Print::print(unsigned int n, int base, int digits) {
+    return print((unsigned long long)n, base, digits);
 }
 
-size_t Print::print(long n, int base) {
-    return print((long long)n, base);
+size_t Print::print(long n, int base, int digits) {
+    return print((long long)n, base, digits);
 }
 
-size_t Print::print(unsigned long n, int base) {
-    return print((unsigned long long)n, base);
+size_t Print::print(unsigned long n, int base, int digits) {
+    return print((unsigned long long)n, base, digits);
 }
 
-size_t Print::print(long long n, int base) {
+size_t Print::print(long long n, int base, int digits) {
     if (base == BYTE) 
 	{
         return write((uint8)n);
@@ -107,15 +107,15 @@ size_t Print::print(long long n, int base) {
         print('-');
         n = -n;
     }
-    return printNumber(n, base);
+    return printNumber(n, base, digits);
 }
 
-size_t Print::print(unsigned long long n, int base) {
+size_t Print::print(unsigned long long n, int base, int digits) {
 size_t c=0;
     if (base == BYTE) {
         c= write((uint8)n);
     } else {
-        c= printNumber(n, base);
+        c= printNumber(n, base, digits);
     }
 	return c;
 }
@@ -160,44 +160,44 @@ size_t Print::println(const char c[]) {
 	return n;
 }
 
-size_t Print::println(uint8 b, int base) {
-    size_t n = print(b, base);
+size_t Print::println(uint8 b, int base, int digits) {
+    size_t n = print(b, base, digits);
 	n += println();
 	return n;
 }
 
-size_t Print::println(int n, int base) {
-    size_t s = print(n, base);
+size_t Print::println(int n, int base, int digits) {
+    size_t s = print(n, base, digits);
     s += println();
 	return s;
 }
 
-size_t Print::println(unsigned int n, int base) {
-    size_t s = print(n, base);
+size_t Print::println(unsigned int n, int base, int digits) {
+    size_t s = print(n, base, digits);
     s += println();
 	return s;
 }
 
-size_t Print::println(long n, int base) {
-    size_t s = print((long long)n, base);
+size_t Print::println(long n, int base, int digits) {
+    size_t s = print((long long)n, base, digits);
     s += println();
 	return s;
 }
 
-size_t Print::println(unsigned long n, int base) {
-    size_t s = print((unsigned long long)n, base);
+size_t Print::println(unsigned long n, int base, int digits) {
+    size_t s = print((unsigned long long)n, base, digits);
     s += println();
 	return s;
 }
 
-size_t Print::println(long long n, int base) {
-    size_t s = print(n, base);
+size_t Print::println(long long n, int base, int digits) {
+    size_t s = print(n, base, digits);
     s += println();
 	return s;
 }
 
-size_t Print::println(unsigned long long n, int base) {
-    size_t s = print(n, base);
+size_t Print::println(unsigned long long n, int base, int digits) {
+    size_t s = print(n, base, digits);
     s += println();
 	return s;
 }
@@ -245,20 +245,27 @@ FILE *__restrict __stream;
  * Private methods
  */
 
-size_t Print::printNumber(unsigned long long n, uint8 base) {
+size_t Print::printNumber(unsigned long long n, uint8 base, uint8 digits) {
     unsigned char buf[CHAR_BIT * sizeof(long long)];
     unsigned long i = 0;
 	size_t s=0;
-    if (n == 0) {
+    /*
+	if (n == 0) {
         print('0');
         return 1;
     }
-
+	*/
     while (n > 0) {
         buf[i++] = n % base;
         n /= base;
     }
 
+	while (digits > i)
+	{
+		print('0');
+		digits--;
+		s++;
+	}
     for (; i > 0; i--) {
         s += print((char)(buf[i - 1] < 10 ?
                      '0' + buf[i - 1] :

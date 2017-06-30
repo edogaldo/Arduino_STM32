@@ -115,3 +115,6 @@ extern const uint8 boardUsedPins[BOARD_NR_USED_PINS] __FLASH__ = {
 DEFINE_HWSERIAL(Serial1, 1);
 DEFINE_HWSERIAL(Serial2, 2);
 DEFINE_HWSERIAL(Serial3, 3);
+
+#include <usb_serial.h>
+USBSerial Serial;
