@@ -140,14 +140,14 @@ static inline void dispatch_multiple_rtc_irq() {
     regs->CRL &= ~handled;
 }
 
-void __irq_rtc(void) {
+__weak void __irq_rtc(void) {
     dispatch_multiple_rtc_irq();
 }
 
 /* A special-case dispatch routine for single-interrupt NVIC lines.
  * This function assumes that the interrupt corresponding to `RTC_ALARM_INTERRUPT' has
  * in fact occurred (i.e., it doesn't check DIER & SR). */
-void __irq_rtcalarm(void) {
+__weak void __irq_rtcalarm(void) {
     void (*handler)(void) = RTC->handlers[RTC_ALARM_SPECIFIC_INTERRUPT];
     if (handler) {
         handler();
