@@ -88,11 +88,9 @@ __default_handler:
 	.weak	__irq_tamper
 	.globl	__irq_tamper
 	.set	__irq_tamper, __default_handler
-/*
 	.weak	__irq_rtc
 	.globl	__irq_rtc
 	.set	__irq_rtc, __default_handler
-*/
 	.weak	__irq_flash
 	.globl	__irq_flash
 	.set	__irq_flash, __default_handler
@@ -210,10 +208,10 @@ __default_handler:
 	.weak	__irq_exti15_10
 	.globl	__irq_exti15_10
 	.set	__irq_exti15_10, __default_handler
+*/
 	.weak	__irq_rtcalarm
 	.globl	__irq_rtcalarm
 	.set	__irq_rtcalarm, __default_handler
-*/
 	.weak	__irq_usbwakeup
 	.globl	__irq_usbwakeup
 	.set	__irq_usbwakeup, __default_handler
