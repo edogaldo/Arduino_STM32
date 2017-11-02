@@ -76,9 +76,6 @@ __default_handler:
 	.weak	__exc_pendsv
 	.globl	__exc_pendsv
 	.set	__exc_pendsv, __default_handler
-	.weak	__exc_systick
-	.globl	__exc_systick
-	.set	__exc_systick, __default_handler
 	.weak	__irq_wwdg
 	.globl	__irq_wwdg
 	.set	__irq_wwdg, __default_handler
