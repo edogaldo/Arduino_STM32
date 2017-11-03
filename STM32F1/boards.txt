@@ -45,8 +45,12 @@ mapleMini.menu.cpu_speed.speed_72mhz.build.f_cpu=72000000L
 mapleMini.menu.cpu_speed.speed_48mhz=48Mhz (Slow - with USB)
 mapleMini.menu.cpu_speed.speed_48mhz.build.f_cpu=48000000L
 
-mapleMini.menu.cpu_speed.speed_96mhz=96Mhz (Overclocked - with USB)
+mapleMini.menu.cpu_speed.speed_96mhz=96Mhz (Overclocked - NO USB)
 mapleMini.menu.cpu_speed.speed_96mhz.build.f_cpu=96000000L
+
+mapleMini.menu.cpu_speed.speed_128mhz=128Mhz (Overclocked - NO USB)
+mapleMini.menu.cpu_speed.speed_128mhz.build.f_cpu=128000000L
+
 
 ###################### Generic STM32F103C ########################################
 
@@ -115,6 +119,9 @@ genericSTM32F103C.menu.cpu_speed.speed_72mhz.build.f_cpu=72000000L
 
 genericSTM32F103C.menu.cpu_speed.speed_48mhz=48Mhz (Slow - with USB)
 genericSTM32F103C.menu.cpu_speed.speed_48mhz.build.f_cpu=48000000L
+
+genericSTM32F103C.menu.cpu_speed.speed_128mhz=Overclocked 128Mhz NO USB SERIAL. MANUAL RESET NEEDED TO UPLOAD
+genericSTM32F103C.menu.cpu_speed.speed_128mhz.build.f_cpu=128000000L
 
 ########################### Generic STM32F103R ###########################
 
@@ -187,6 +194,16 @@ genericSTM32F103R.menu.upload_method.BMPMethod.upload.protocol=gdb_bmp
 genericSTM32F103R.menu.upload_method.BMPMethod.upload.tool=bmp_upload
 genericSTM32F103R.menu.upload_method.BMPMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG
 
+#-- CPU Clock frequency
+genericSTM32F103R.menu.cpu_speed.speed_72mhz=72Mhz (Normal)
+genericSTM32F103R.menu.cpu_speed.speed_72mhz.build.f_cpu=72000000L
+
+genericSTM32F103R.menu.cpu_speed.speed_48mhz=48Mhz (Slow - with USB)
+genericSTM32F103R.menu.cpu_speed.speed_48mhz.build.f_cpu=48000000L
+
+genericSTM32F103R.menu.cpu_speed.speed_128mhz=Overclocked 128Mhz NO USB SERIAL. MANUAL RESET NEEDED TO UPLOAD
+genericSTM32F103R.menu.cpu_speed.speed_128mhz.build.f_cpu=128000000L
+
 ########################### Generic STM32F103V ###########################
 
 genericSTM32F103V.name=Generic STM32F103V series
@@ -249,6 +266,16 @@ genericSTM32F103V.menu.upload_method.BMPMethod.upload.protocol=gdb_bmp
 genericSTM32F103V.menu.upload_method.BMPMethod.upload.tool=bmp_upload
 genericSTM32F103V.menu.upload_method.BMPMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG
 
+#-- CPU Clock frequency
+genericSTM32F103V.menu.cpu_speed.speed_72mhz=72Mhz (Normal)
+genericSTM32F103V.menu.cpu_speed.speed_72mhz.build.f_cpu=72000000L
+
+genericSTM32F103V.menu.cpu_speed.speed_48mhz=48Mhz (Slow - with USB)
+genericSTM32F103V.menu.cpu_speed.speed_48mhz.build.f_cpu=48000000L
+
+genericSTM32F103V.menu.cpu_speed.speed_128mhz=Overclocked 128Mhz NO USB SERIAL. MANUAL RESET NEEDED TO UPLOAD
+genericSTM32F103V.menu.cpu_speed.speed_128mhz.build.f_cpu=128000000L
+
 ########################### Generic STM32F103Z ###########################
 
 genericSTM32F103Z.name=Generic STM32F103Z series
@@ -308,5 +335,16 @@ genericSTM32F103Z.menu.upload_method.BMPMethod=BMP (Black Magic Probe)
 genericSTM32F103Z.menu.upload_method.BMPMethod.upload.protocol=gdb_bmp
 genericSTM32F103Z.menu.upload_method.BMPMethod.upload.tool=bmp_upload
 genericSTM32F103Z.menu.upload_method.BMPMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG
+
+#-- CPU Clock frequency
+genericSTM32F103Z.menu.cpu_speed.speed_72mhz=72Mhz (Normal)
+genericSTM32F103Z.menu.cpu_speed.speed_72mhz.build.f_cpu=72000000L
+
+genericSTM32F103Z.menu.cpu_speed.speed_48mhz=48Mhz (Slow - with USB)
+genericSTM32F103Z.menu.cpu_speed.speed_48mhz.build.f_cpu=48000000L
+
+genericSTM32F103Z.menu.cpu_speed.speed_128mhz=Overclocked 128Mhz NO USB SERIAL. MANUAL RESET NEEDED TO UPLOAD
+genericSTM32F103Z.menu.cpu_speed.speed_128mhz.build.f_cpu=128000000L
+
 
 ################################################################################
