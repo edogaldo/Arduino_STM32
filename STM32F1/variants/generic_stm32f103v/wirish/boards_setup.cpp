@@ -51,10 +51,10 @@
 	#if F_CPU==128000000
 		#define BOARD_RCC_PLLMUL RCC_PLLMUL_16
 	#elif F_CPU==72000000
-	#define BOARD_RCC_PLLMUL RCC_PLLMUL_9
-  #elif F_CPU==48000000
-	#define BOARD_RCC_PLLMUL RCC_PLLMUL_6
-  #endif
+		#define BOARD_RCC_PLLMUL RCC_PLLMUL_9
+	#elif F_CPU==48000000
+		#define BOARD_RCC_PLLMUL RCC_PLLMUL_6
+	#endif
 #endif
 
 namespace wirish {

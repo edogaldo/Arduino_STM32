@@ -83,7 +83,7 @@ long random(long min, long max);
   static inline int32_t map(int32_t value, int32_t fromStart, int32_t fromEnd,
      int32_t toStart, int32_t toEnd) {
      return ((int64_t)(value - fromStart) * (toEnd - toStart)) / (fromEnd - fromStart) +
-        toStart;
+         toStart;
  }
 
 #define PI          3.1415926535897932384626433832795

@@ -99,10 +99,6 @@ size_t Print::print(unsigned long n, int base, int digits) {
 }
 
 size_t Print::print(long long n, int base, int digits) {
-    if (base == BYTE) 
-	{
-        return write((uint8)n);
-    }
     if (n < 0) {
         print('-');
         n = -n;
@@ -111,13 +107,7 @@ size_t Print::print(long long n, int base, int digits) {
 }
 
 size_t Print::print(unsigned long long n, int base, int digits) {
-size_t c=0;
-    if (base == BYTE) {
-        c= write((uint8)n);
-    } else {
-        c= printNumber(n, base, digits);
-    }
-	return c;
+	return printNumber(n, base, digits);
 }
 
 size_t Print::print(double n, int digits) {

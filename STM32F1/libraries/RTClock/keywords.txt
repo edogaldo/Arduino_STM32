@@ -6,13 +6,13 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-RTClock	KEYWORD1
+RTClock			KEYWORD1
 
 
-setTime					KEYWORD2
-getTime					KEYWORD2
+setTime			KEYWORD2
+getTime			KEYWORD2
 
-createAlarm				KEYWORD2
+createAlarm		KEYWORD2
 removeAlarm		KEYWORD2
 setAlarmTime		KEYWORD2
 

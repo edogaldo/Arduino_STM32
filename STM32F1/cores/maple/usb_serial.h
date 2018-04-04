@@ -44,24 +44,24 @@ public:
 
     void begin(void);
 
-	// Roger Clark. Added dummy function so that existing Arduino sketches which specify baud rate will compile.
-	void begin(unsigned long);
-	void begin(unsigned long, uint8_t);
+    // Roger Clark. Added dummy function so that existing Arduino sketches which specify baud rate will compile.
+    void begin(unsigned long);
+    void begin(unsigned long, uint8_t);
     void end(void);
 
     virtual int available(void);// Changed to virtual
 
     size_t readBytes(char *buf, const size_t& len);
     uint32 read(uint8 * buf, uint32 len);
-   // uint8  read(void);
+    // uint8  read(void);
 
-	// Roger Clark. added functions to support Arduino 1.0 API
+    // Roger Clark. added functions to support Arduino 1.0 API
     virtual int peek(void);
     virtual int read(void);
     int availableForWrite(void);
     virtual void flush(void);
-	
-	
+
+
     size_t write(uint8);
     size_t write(const char *str);
     size_t write(const uint8*, uint32);
@@ -75,7 +75,7 @@ public:
 
      * Used for instance in cardinfo.ino.
      */
-	operator bool();
+    operator bool();
 
     /* Old libmaple way to check for serial connection.
      *
@@ -87,8 +87,8 @@ protected:
     static bool _hasBegun;
 };
 
-#ifdef SERIAL_USB 
-	extern USBSerial Serial;
+#ifdef SERIAL_USB
+    extern USBSerial Serial;
 #endif
 
 #endif

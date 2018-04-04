@@ -5,10 +5,10 @@ Arduino 1.6.0rc1
   Global variables use 3,776 bytes of dynamic memory.
 History:
 http://forum.arduino.cc/index.php?topic=266669
-"How do i get index 6+7 and 8+9 from a stream of 24 chars that come from the serial input into the Arduino? 
+"How do i get index 6+7 and 8+9 from a stream of 24 chars that come from the serial input into the Arduino?
 The connected serial device is in idle mode until i send a command to it. When i send ZD,
-it will send a timecode in the format ZD2b102c080c090e05ba0549, where ZD stands for the type of message it returns. 
-2c represents the minutes and 08 the hours of the the current time (in HEX format). The last 4 chars are a checksum. 
+it will send a timecode in the format ZD2b102c080c090e05ba0549, where ZD stands for the type of message it returns.
+2c represents the minutes and 08 the hours of the the current time (in HEX format). The last 4 chars are a checksum.
 There is no CR or NL at the end. I would like to get the minutes and hours as interger values."
 */
 
@@ -48,7 +48,7 @@ void setup(void)
   hours  = (int)strtol(Hbuf, NULL, 16);   // <----- cast to (int) because strtol returns long
   minutes= (int)strtol(Mbuf, NULL, 16);   //        ditto
   Serial << "Hours: " << hours << "  Minutes: " << minutes << "\r \n";  // show it on term
-  
+
   Serial << "\r\n *****End of run*****\r\n" ;
   Serial.end();
 }
@@ -62,6 +62,6 @@ Original String: ZD2b102c080c090e05ba0549
 Substrings: 0x08\0:0x2c\0
 
 Hours: 8  Minutes: 44
- 
+
  *****End of run*****
 */

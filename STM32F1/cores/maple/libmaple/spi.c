@@ -106,8 +106,8 @@ uint32 spi_tx(spi_dev *dev, const void *buf, uint32 len) {
 		while ( len-- ) {
 			while ( (regs->SR & SPI_SR_TXE)==0 ) ; //while ( spi_is_tx_empty(dev)==0 ); // wait Tx to be empty
 			regs->DR = *dp16++;
-        }
-    }
+		}
+	}
     return txed;
 }
 

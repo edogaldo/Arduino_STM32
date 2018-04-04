@@ -175,8 +175,8 @@ void adc_attach_interrupt(adc_dev *dev,
  * @param dev adc device
  */
 void adc_calibrate(adc_dev *dev) {
-    __io uint32 *rstcal_bit = bb_perip(&(dev->regs->CR2), 3);
-    __io uint32 *cal_bit = bb_perip(&(dev->regs->CR2), 2);
+    __IO uint32 *rstcal_bit = bb_perip(&(dev->regs->CR2), 3);
+    __IO uint32 *cal_bit = bb_perip(&(dev->regs->CR2), 2);
 
     *rstcal_bit = 1;
     while (*rstcal_bit)
@@ -203,7 +203,7 @@ void adc_foreach(void (*fn)(adc_dev*)) {
 #endif
 }
 
-void adc_config_gpio(adc_dev *ignored, gpio_dev *gdev, uint8 bit) {
+void adc_config_gpio(adc_dev *ignored __attribute__((unused)), gpio_dev *gdev, uint8 bit) {
     gpio_set_mode(gdev, bit, GPIO_INPUT_ANALOG);
 }
 
