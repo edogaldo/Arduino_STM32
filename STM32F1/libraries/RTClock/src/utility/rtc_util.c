@@ -168,8 +168,10 @@ uint32 rtc_get_count() {
 	rtc_clear_sync();
 	rtc_wait_sync();
 	rtc_wait_finished();
-	h = RTC->regs->CNTH & 0xffff;
-	l = RTC->regs->CNTL & 0xffff;
+	do {
+		h = RTC->regs->CNTH & 0xffff;
+		l = RTC->regs->CNTL & 0xffff;
+	} while (h ^ (RTC->regs->CNTH & 0xffff));
 	return (h << 16) | l;
 }
 
