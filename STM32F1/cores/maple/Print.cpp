@@ -47,12 +47,8 @@
  */
 
 size_t Print::write(const char *str) {
-	size_t n = 0;
-    while (*str) {
-        write(*str++);
-		n++;
-    }
-	return n;
+    if (str == NULL) return 0;
+	return write((const uint8_t *)str, strlen(str));
 }
 
 size_t Print::write(const void *buffer, uint32 size) {
@@ -239,12 +235,7 @@ size_t Print::printNumber(unsigned long long n, uint8 base, uint8 digits) {
     unsigned char buf[CHAR_BIT * sizeof(long long)];
     unsigned long i = 0;
 	size_t s=0;
-    /*
-	if (n == 0) {
-        print('0');
-        return 1;
-    }
-	*/
+
     while (n > 0) {
         buf[i++] = n % base;
         n /= base;
