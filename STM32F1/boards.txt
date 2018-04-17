@@ -186,7 +186,7 @@ genericSTM32F103C.menu.opt.ogstd.build.flags.ldspecs=
 genericSTM32F103C_EG.name=Generic STM32F103C series (EG)
 genericSTM32F103C_EG.vid.0=0x1EAF
 genericSTM32F103C_EG.pid.0=0x0004
-genericSTM32F103C_EG.build.variant=generic_stm32f103c
+genericSTM32F103C_EG.build.variant=generic_stm32f103c_EG
 genericSTM32F103C_EG.build.vect=VECT_TAB_ADDR=0x8000000
 genericSTM32F103C_EG.build.core=maple
 genericSTM32F103C_EG.build.board=GENERIC_STM32F103C

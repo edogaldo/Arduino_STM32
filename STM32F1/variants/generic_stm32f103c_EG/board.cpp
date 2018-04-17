@@ -109,25 +109,3 @@ extern const uint8 boardADCPins[BOARD_NR_ADC_PINS] __FLASH__ = {
 extern const uint8 boardUsedPins[BOARD_NR_USED_PINS] __FLASH__ = {
      USB_DP, USB_DM
 };
-
-
-/* 
- * Roger Clark
- * 
- * 2015/05/28
- *
- * Moved definitions for Hardware Serial devices from HardwareSerial.cpp so that each board can define which Arduino "Serial" instance
- * Maps to which hardware serial port on the microprocessor
- */
-						
-/* Roger Clark. Added next to includes for changes to Serial */
-#include <libmaple/usart.h>
-#include <HardwareSerial.h>
-DEFINE_HWSERIAL(Serial1, 1);
-
-#ifdef SERIAL_USB
-#include <usb_serial.h>
-USBSerial Serial;
-#else
-HardwareSerial& Serial=Serial1;
-#endif
