@@ -40,7 +40,7 @@
  * Devices
  */
 
-static ring_buffer usart1_rb;
+/*static ring_buffer usart1_rb;
 static ring_buffer usart1_wb;
 static usart_dev usart1 = {
     .regs     = USART1_BASE,
@@ -49,11 +49,12 @@ static usart_dev usart1 = {
     .max_baud = 4500000UL,
     .clk_id   = RCC_USART1,
     .irq_num  = NVIC_USART1,
-};
+};*/
+__CREATE_USART(usart1,USART1,4500000UL,USART_RX_BUF_SIZE,USART_TX_BUF_SIZE)
 /** USART1 device */
 usart_dev *USART1 = &usart1;
 
-static ring_buffer usart2_rb;
+/*static ring_buffer usart2_rb;
 static ring_buffer usart2_wb;
 static usart_dev usart2 = {
     .regs     = USART2_BASE,
@@ -62,11 +63,12 @@ static usart_dev usart2 = {
     .max_baud = 2250000UL,
     .clk_id   = RCC_USART2,
     .irq_num  = NVIC_USART2,
-};
+};*/
+__CREATE_USART(usart2,USART2,2250000UL,USART_RX_BUF_SIZE,USART_TX_BUF_SIZE)
 /** USART2 device */
 usart_dev *USART2 = &usart2;
 
-static ring_buffer usart3_rb;
+/*static ring_buffer usart3_rb;
 static ring_buffer usart3_wb;
 static usart_dev usart3 = {
     .regs     = USART3_BASE,
@@ -75,12 +77,13 @@ static usart_dev usart3 = {
     .max_baud = 2250000UL,
     .clk_id   = RCC_USART3,
     .irq_num  = NVIC_USART3,
-};
+};*/
+__CREATE_USART(usart3,USART3,2250000UL,USART_RX_BUF_SIZE,USART_TX_BUF_SIZE)
 /** USART3 device */
 usart_dev *USART3 = &usart3;
 
 #if defined(STM32_HIGH_DENSITY) || defined(STM32_XL_DENSITY)
-static ring_buffer uart4_rb;
+/*static ring_buffer uart4_rb;
 static ring_buffer uart4_wb;
 static usart_dev uart4 = {
     .regs     = UART4_BASE,
@@ -89,11 +92,12 @@ static usart_dev uart4 = {
     .max_baud = 2250000UL,
     .clk_id   = RCC_UART4,
     .irq_num  = NVIC_UART4,
-};
+};*/
+__CREATE_USART(uart4,UART4,2250000UL,USART_RX_BUF_SIZE,USART_TX_BUF_SIZE)
 /** UART4 device */
 usart_dev *UART4 = &uart4;
 
-static ring_buffer uart5_rb;
+/*static ring_buffer uart5_rb;
 static ring_buffer uart5_wb;
 static usart_dev uart5 = {
     .regs     = UART5_BASE,
@@ -102,7 +106,8 @@ static usart_dev uart5 = {
     .max_baud = 2250000UL,
     .clk_id   = RCC_UART5,
     .irq_num  = NVIC_UART5,
-};
+};*/
+__CREATE_USART(uart5,UART5,2250000UL,USART_RX_BUF_SIZE,USART_TX_BUF_SIZE)
 /** UART5 device */
 usart_dev *UART5 = &uart5;
 #endif

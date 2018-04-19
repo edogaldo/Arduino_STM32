@@ -392,14 +392,30 @@ typedef struct usart_dev {
     ring_buffer *wb;                 /**< TX ring buffer */
     uint32 max_baud;                 /**< @brief Deprecated.
                                       * Maximum baud rate. */
-    uint8 rx_buf[USART_RX_BUF_SIZE]; /**< @brief Deprecated.
+    rcc_clk_id clk_id;               /**< RCC clock information */
+    nvic_irq_num irq_num;            /**< USART NVIC interrupt */
+    uint8 *rx_buf;                   /**< @brief Deprecated.
                                       * Actual RX buffer used by rb.
                                       * This field will be removed in
                                       * a future release. */
-    uint8 tx_buf[USART_TX_BUF_SIZE]; /**< Actual TX buffer used by wb */
-    rcc_clk_id clk_id;               /**< RCC clock information */
-    nvic_irq_num irq_num;            /**< USART NVIC interrupt */
+    uint8 *tx_buf;                   /**< Actual TX buffer used by wb */
 } usart_dev;
+
+#define __CREATE_USART(name,device,bd_max,rb_size,wb_size)     \
+	uint8 name##_rb_buf[rb_size];                              \
+	static ring_buffer name##_rb;                              \
+	uint8 name##_wb_buf[wb_size];                              \
+	static ring_buffer name##_wb;                              \
+	static usart_dev name = {                                  \
+		.regs     = device##_BASE,                             \
+		.rb       = &name##_rb,                                \
+		.wb       = &name##_wb,                                \
+		.max_baud = bd_max,                                    \
+		.clk_id   = RCC_##device,                              \
+		.irq_num  = NVIC_##device,                             \
+		.rx_buf   = name##_rb_buf,                             \
+		.tx_buf   = name##_wb_buf,                             \
+	};
 
 void usart_init(usart_dev *dev);
 
