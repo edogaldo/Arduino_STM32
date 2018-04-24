@@ -40,7 +40,7 @@
 #include <libmaple/timer.h>
 
 #include <boards.h>
-#include <usb_serial.h>
+#include <usb_composite_serial.h>
 
 namespace wirish {
     namespace priv {

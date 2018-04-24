@@ -31,8 +31,8 @@
  * IMPORTANT: this API is unstable, and may change without notice.
  */
 
-#ifndef _USB_SERIAL_H_
-#define _USB_SERIAL_H_
+#ifndef _USB_COMPOSITE_SERIAL_
+#define _USB_COMPOSITE_SERIAL_
 
 #include <libmaple/libmaple_types.h>
 #include <libmaple/usb.h>
