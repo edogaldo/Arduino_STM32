@@ -37,7 +37,7 @@
 #include <libmaple/usb_cdcacm.h>
 #include <libmaple/usb.h>
 #include <libmaple/iwdg.h>
-
+#include <libmaple/bkp.h>
 #include "wirish.h"
 
 /*
