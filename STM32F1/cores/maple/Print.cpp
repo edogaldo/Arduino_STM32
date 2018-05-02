@@ -61,8 +61,8 @@ size_t Print::write(const void *buffer, uint32 size) {
 	return n;
 }
 
-size_t Print::print(uint8 b, int base, int digits) {
-    return print((uint64)b, base, digits);
+size_t Print::print(uint8 b, int base, int minDigits) {
+    return print((uint64)b, base, minDigits);
 }
 
 size_t Print::print(const String &s)
@@ -78,36 +78,36 @@ size_t Print::print(const char str[]) {
     return write(str);
 }
 
-size_t Print::print(int n, int base, int digits) {
-    return print((long long)n, base, digits);
+size_t Print::print(int n, int base, int minDigits) {
+    return print((long long)n, base, minDigits);
 }
 
-size_t Print::print(unsigned int n, int base, int digits) {
-    return print((unsigned long long)n, base, digits);
+size_t Print::print(unsigned int n, int base, int minDigits) {
+    return print((unsigned long long)n, base, minDigits);
 }
 
-size_t Print::print(long n, int base, int digits) {
-    return print((long long)n, base, digits);
+size_t Print::print(long n, int base, int minDigits) {
+    return print((long long)n, base, minDigits);
 }
 
-size_t Print::print(unsigned long n, int base, int digits) {
-    return print((unsigned long long)n, base, digits);
+size_t Print::print(unsigned long n, int base, int minDigits) {
+    return print((unsigned long long)n, base, minDigits);
 }
 
-size_t Print::print(long long n, int base, int digits) {
+size_t Print::print(long long n, int base, int minDigits) {
     if (n < 0) {
         print('-');
         n = -n;
     }
-    return printNumber(n, base, digits);
+    return printNumber(n, base, minDigits);
 }
 
-size_t Print::print(unsigned long long n, int base, int digits) {
-	return printNumber(n, base, digits);
+size_t Print::print(unsigned long long n, int base, int minDigits) {
+	return printNumber(n, base, minDigits);
 }
 
-size_t Print::print(double n, int digits) {
-    return printFloat(n, digits);
+size_t Print::print(double n, int minDigits) {
+    return printFloat(n, minDigits);
 }
 
 size_t Print::print(const __FlashStringHelper *ifsh)
@@ -146,50 +146,50 @@ size_t Print::println(const char c[]) {
 	return n;
 }
 
-size_t Print::println(uint8 b, int base, int digits) {
-    size_t n = print(b, base, digits);
+size_t Print::println(uint8 b, int base, int minDigits) {
+    size_t n = print(b, base, minDigits);
 	n += println();
 	return n;
 }
 
-size_t Print::println(int n, int base, int digits) {
-    size_t s = print(n, base, digits);
+size_t Print::println(int n, int base, int minDigits) {
+    size_t s = print(n, base, minDigits);
     s += println();
 	return s;
 }
 
-size_t Print::println(unsigned int n, int base, int digits) {
-    size_t s = print(n, base, digits);
+size_t Print::println(unsigned int n, int base, int minDigits) {
+    size_t s = print(n, base, minDigits);
     s += println();
 	return s;
 }
 
-size_t Print::println(long n, int base, int digits) {
-    size_t s = print((long long)n, base, digits);
+size_t Print::println(long n, int base, int minDigits) {
+    size_t s = print((long long)n, base, minDigits);
     s += println();
 	return s;
 }
 
-size_t Print::println(unsigned long n, int base, int digits) {
-    size_t s = print((unsigned long long)n, base, digits);
+size_t Print::println(unsigned long n, int base, int minDigits) {
+    size_t s = print((unsigned long long)n, base, minDigits);
     s += println();
 	return s;
 }
 
-size_t Print::println(long long n, int base, int digits) {
-    size_t s = print(n, base, digits);
+size_t Print::println(long long n, int base, int minDigits) {
+    size_t s = print(n, base, minDigits);
     s += println();
 	return s;
 }
 
-size_t Print::println(unsigned long long n, int base, int digits) {
-    size_t s = print(n, base, digits);
+size_t Print::println(unsigned long long n, int base, int minDigits) {
+    size_t s = print(n, base, minDigits);
     s += println();
 	return s;
 }
 
-size_t Print::println(double n, int digits) {
-    size_t s = print(n, digits);
+size_t Print::println(double n, int minDigits) {
+    size_t s = print(n, minDigits);
     s += println();
 	return s;
 }
@@ -231,7 +231,7 @@ FILE *__restrict __stream;
  * Private methods
  */
 
-size_t Print::printNumber(unsigned long long n, uint8 base, uint8 digits) {
+size_t Print::printNumber(unsigned long long n, uint8 base, uint8 minDigits) {
     unsigned char buf[CHAR_BIT * sizeof(long long)];
     unsigned long i = 0;
 	size_t s=0;
@@ -273,7 +273,7 @@ size_t Print::printNumber(unsigned long long n, uint8 base, uint8 digits) {
  *
  * http://kurtstephens.com/files/p372-steele.pdf
  */
-size_t Print::printFloat(double number, uint8 digits) {
+size_t Print::printFloat(double number, uint8 minDigits) {
 size_t s=0;
     // Hackish fail-fast behavior for large-magnitude doubles
     if (abs(number) >= LARGE_DOUBLE_TRESHOLD) {
@@ -293,7 +293,7 @@ size_t s=0;
     // Simplistic rounding strategy so that e.g. print(1.999, 2)
     // prints as "2.00"
     double rounding = 0.5;
-    for (uint8 i = 0; i < digits; i++) {
+    for (uint8 i = 0; i < minDigits; i++) {
         rounding /= 10.0;
     }
     number += rounding;
@@ -303,12 +303,12 @@ size_t s=0;
     double remainder = number - int_part;
     s+=print(int_part);
 
-    // Print the decimal point, but only if there are digits beyond
+    // Print the decimal point, but only if there are minDigits beyond
     if (digits > 0) {
         s+=print(".");
     }
 
-    // Extract digits from the remainder one at a time
+    // Extract minDigits from the remainder one at a time
     while (digits-- > 0) {
         remainder *= 10.0;
         int to_print = (int)remainder;
