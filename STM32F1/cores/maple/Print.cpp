@@ -241,10 +241,10 @@ size_t Print::printNumber(unsigned long long n, uint8 base, uint8 minDigits) {
         n /= base;
     }
 
-	while (digits > i)
+	while (minDigits > i)
 	{
 		print('0');
-		digits--;
+		minDigits--;
 		s++;
 	}
     for (; i > 0; i--) {
@@ -273,7 +273,7 @@ size_t Print::printNumber(unsigned long long n, uint8 base, uint8 minDigits) {
  *
  * http://kurtstephens.com/files/p372-steele.pdf
  */
-size_t Print::printFloat(double number, uint8 minDigits) {
+size_t Print::printFloat(double number, uint8 digits) {
 size_t s=0;
     // Hackish fail-fast behavior for large-magnitude doubles
     if (abs(number) >= LARGE_DOUBLE_TRESHOLD) {
@@ -293,7 +293,7 @@ size_t s=0;
     // Simplistic rounding strategy so that e.g. print(1.999, 2)
     // prints as "2.00"
     double rounding = 0.5;
-    for (uint8 i = 0; i < minDigits; i++) {
+    for (uint8 i = 0; i < digits; i++) {
         rounding /= 10.0;
     }
     number += rounding;
@@ -303,12 +303,12 @@ size_t s=0;
     double remainder = number - int_part;
     s+=print(int_part);
 
-    // Print the decimal point, but only if there are minDigits beyond
+    // Print the decimal point, but only if there are digits beyond
     if (digits > 0) {
         s+=print(".");
     }
 
-    // Extract minDigits from the remainder one at a time
+    // Extract digits from the remainder one at a time
     while (digits-- > 0) {
         remainder *= 10.0;
         int to_print = (int)remainder;
