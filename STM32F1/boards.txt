@@ -289,6 +289,7 @@ genericSTM32F103V.upload.tool=maple_upload
 genericSTM32F103V.upload.protocol=maple_dfu
 
 genericSTM32F103V.menu.device_variant.STM32F103VE=STM32F103VE
+genericSTM32F103V.menu.device_variant.STM32F103VE.build.variant=generic_stm32f103v
 genericSTM32F103V.menu.device_variant.STM32F103VE.build.cpu_flags=-DMCU_STM32F103VE -DUSART_RX_BUF_SIZE=128 -DUSART_TX_BUF_SIZE=128
 genericSTM32F103V.menu.device_variant.STM32F103VE.upload.maximum_size=524288
 genericSTM32F103V.menu.device_variant.STM32F103VE.upload.maximum_data_size=65536
@@ -358,7 +359,6 @@ genericSTM32F103V.menu.opt.o3lto.build.flags.ldspecs=-flto
 genericSTM32F103V.menu.opt.ogstd=Debug (-g)
 genericSTM32F103V.menu.opt.ogstd.build.flags.optimize=-Og
 genericSTM32F103V.menu.opt.ogstd.build.flags.ldspecs=
-
 
 ########################### Generic STM32F103Z ###########################
 

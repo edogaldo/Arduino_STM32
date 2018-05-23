@@ -68,7 +68,7 @@ extern struct gpio_dev gpioc;
 extern struct gpio_dev* const GPIOC;
 extern struct gpio_dev gpiod;
 extern struct gpio_dev* const GPIOD;
-#ifdef STM32_HIGH_DENSITY
+#if STM32_NR_GPIO_PORTS > 4
 extern struct gpio_dev gpioe;
 extern struct gpio_dev* const GPIOE;
 extern struct gpio_dev gpiof;
