@@ -88,7 +88,7 @@
 /* Note: NOT 19. The missing one is D38 a.k.a. BOARD_BUTTON_PIN, which
  * isn't broken out to a header and is thus unusable for PWM. */
 #define BOARD_NR_PWM_PINS       19
-#define BOARD_NR_ADC_PINS       16
+#define BOARD_NR_ADC_PINS       21
 #define BOARD_NR_USED_PINS      7
 
 #define BOARD_JTMS_SWDIO_PIN    39
