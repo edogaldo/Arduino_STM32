@@ -79,22 +79,22 @@ extern const stm32_pin_info PIN_MAP[BOARD_NR_GPIO_PINS] = {
     uint8 adc_channel;          Pin ADC channel, or ADCx if none. 
 */
 
-    {&gpioa, &timer2, &adc1,  0, 1,    0}, /* PA0 */
-    {&gpioa, &timer2, &adc1,  1, 2,    1}, /* PA1 */
-	{&gpioa, &timer2, &adc1,  2, 3,    2}, /* PA2 */
-    {&gpioa, &timer2, &adc1,  3, 4,    3}, /* PA3 */
-	{&gpioa,    NULL, &adc1,  4, 0,    4}, /* PA4 */	
-    {&gpioa,    NULL, &adc1,  5, 0,    5}, /* PA5 */
-    {&gpioa, &timer3, &adc1,  6, 1,    6}, /* PA6 */
-    {&gpioa, &timer3, &adc1,  7, 2,    7}, /* PA7 */
-    {&gpioa, &timer1,  NULL,  8, 1, ADCx}, /* PA8 */
-    {&gpioa, &timer1,  NULL,  9, 2, ADCx}, /* PA9 */
-    {&gpioa, &timer1,  NULL, 10, 3, ADCx}, /* PA10 */
-    {&gpioa,    NULL,  NULL, 11, 0, ADCx}, /* PA11 */ //Could have &timer1_CH4, but is also CAN_RX and USBDM 
-    {&gpioa,    NULL,  NULL, 12, 0, ADCx}, /* PA12 */ //Could have &timer1_ETR, but is also CAN_TX and USBDP
+    {&gpioa, &timer2, &adc1,  0, 1,    0}, /* PA0   ADC123_IN0|TIM2_CH1 */
+    {&gpioa, &timer2, &adc1,  1, 2,    1}, /* PA1   ADC123_IN1|TIM2_CH2 */
+	{&gpioa, &timer2, &adc1,  2, 3,    2}, /* PA2   ADC123_IN2|TIM2_CH3 */
+    {&gpioa, &timer2, &adc1,  3, 4,    3}, /* PA3   ADC123_IN3|TIM2_CH4 */
+	{&gpioa,    NULL, &adc1,  4, 0,    4}, /* PA4   ADC12_IN4|DAC_OUT1 */
+    {&gpioa,    NULL, &adc1,  5, 0,    5}, /* PA5   ADC12_IN5|DAC_OUT2 */
+    {&gpioa, &timer3, &adc1,  6, 1,    6}, /* PA6   ADC12_IN6|TIM3_CH1 */
+    {&gpioa, &timer3, &adc1,  7, 2,    7}, /* PA7   ADC12_IN7|TIM3_CH2 */
+    {&gpioa, &timer1,  NULL,  8, 1, ADCx}, /* PA8   TIM1_CH1 */
+    {&gpioa, &timer1,  NULL,  9, 2, ADCx}, /* PA9   TIM1_CH2 */
+    {&gpioa, &timer1,  NULL, 10, 3, ADCx}, /* PA10  TIM1_CH3 */
+    {&gpioa, &timer1,  NULL, 11, 4, ADCx}, /* PA11  USB_DM|CAN_RX|TIM1_CH4 */ 
+    {&gpioa,    NULL,  NULL, 12, 0, ADCx}, /* PA12  USB_DP|CAN_TX|TIM1_ETR */
     {&gpioa,    NULL,  NULL, 13, 0, ADCx}, /* PA13 */
     {&gpioa,    NULL,  NULL, 14, 0, ADCx}, /* PA14 */
-    {&gpioa,    NULL,  NULL, 15, 0, ADCx}, /* PA15 */ //SPI3_NSS 
+    {&gpioa,    NULL,  NULL, 15, 0, ADCx}, /* PA15  SPI3_NSS */
 	
 	{&gpiob, &timer3, &adc1,  0, 3,    8}, /* PB0 */ 
 	{&gpiob, &timer3, &adc1,  1, 4,    9}, /* PB1 */
@@ -113,60 +113,60 @@ extern const stm32_pin_info PIN_MAP[BOARD_NR_GPIO_PINS] = {
     {&gpiob,    NULL,  NULL, 14, 0, ADCx}, /* PB14 */ //SPI2_MISO/TIM1_CH2N/USART3_RTS
     {&gpiob,    NULL,  NULL, 15, 0, ADCx}, /* PB15 */ //SPI2_MOSI/I2S2_SD
 
-    {&gpioc,    NULL, &adc1,  0, 0,   10}, /* PC0 */
-    {&gpioc,    NULL, &adc1,  1, 0,   11}, /* PC1 */
-    {&gpioc,    NULL, &adc1,  2, 0,   12}, /* PC2 */
-    {&gpioc,    NULL, &adc1,  3, 0,   13}, /* PC3 */
-    {&gpioc,    NULL, &adc1,  4, 0,   14}, /* PC4 */
-    {&gpioc,    NULL, &adc1,  5, 0,   15}, /* PC5 */
-    {&gpioc, &timer8,  NULL,  6, 1, ADCx}, /* PC6 I2S2_MCK/SDIO_D6*/	
-	{&gpioc, &timer8,  NULL,  7, 2, ADCx}, /* PC7 I2S3_MCK/SDIO_D7*/
-    {&gpioc, &timer8,  NULL,  8, 3, ADCx}, /* PC8 SDIO_D0*/
-    {&gpioc, &timer8,  NULL,  9, 4, ADCx}, /* PC9 SDIO_D1*/
-    {&gpioc,    NULL,  NULL, 10, 0, ADCx}, /* PC10 UART4_TX/SDIO_D2 */
-    {&gpioc,    NULL,  NULL, 11, 0, ADCx}, /* PC11 UART4_RX/SDIO_D3 */
-    {&gpioc,    NULL,  NULL, 12, 0, ADCx}, /* PC12 UART5_TX/SDIO_CK */	
-    {&gpioc,    NULL,  NULL, 13, 0, ADCx}, /* PC13 TAMPER-RTC/ Limited output*/
-    {&gpioc,    NULL,  NULL, 14, 0, ADCx}, /* PC14 OSC32_IN/ Limited output*/
-    {&gpioc,    NULL,  NULL, 15, 0, ADCx}, /* PC15 OSC32_OUT/ Limited output*/
+    {&gpioc,    NULL, &adc1,  0, 0,   10}, /* PC0   ADC123_IN10 */
+    {&gpioc,    NULL, &adc1,  1, 0,   11}, /* PC1   ADC123_IN11 */
+    {&gpioc,    NULL, &adc1,  2, 0,   12}, /* PC2   ADC123_IN12 */
+    {&gpioc,    NULL, &adc1,  3, 0,   13}, /* PC3   ADC123_IN13 */
+    {&gpioc,    NULL, &adc1,  4, 0,   14}, /* PC4   ADC12_IN14  */
+    {&gpioc,    NULL, &adc1,  5, 0,   15}, /* PC5   ADC12_IN15  */
+    {&gpioc, &timer8,  NULL,  6, 1, ADCx}, /* PC6   I2S2_MCK/SDIO_D6*/	
+	{&gpioc, &timer8,  NULL,  7, 2, ADCx}, /* PC7   I2S3_MCK/SDIO_D7*/
+    {&gpioc, &timer8,  NULL,  8, 3, ADCx}, /* PC8   SDIO_D0*/
+    {&gpioc, &timer8,  NULL,  9, 4, ADCx}, /* PC9   SDIO_D1*/
+    {&gpioc,    NULL,  NULL, 10, 0, ADCx}, /* PC10  UART4_TX/SDIO_D2 */
+    {&gpioc,    NULL,  NULL, 11, 0, ADCx}, /* PC11  UART4_RX/SDIO_D3 */
+    {&gpioc,    NULL,  NULL, 12, 0, ADCx}, /* PC12  UART5_TX/SDIO_CK */	
+    {&gpioc,    NULL,  NULL, 13, 0, ADCx}, /* PC13  TAMPER-RTC/ Limited output*/
+    {&gpioc,    NULL,  NULL, 14, 0, ADCx}, /* PC14  OSC32_IN/ Limited output*/
+    {&gpioc,    NULL,  NULL, 15, 0, ADCx}, /* PC15  OSC32_OUT/ Limited output*/
 
-	{&gpiod,    NULL, NULL,   0, 0, ADCx} , /* PD0 OSC_IN */
-	{&gpiod,    NULL, NULL,   1, 0, ADCx} , /* PD1  OSC_OUT */
-	{&gpiod,    NULL, NULL,   2, 0, ADCx} , /* PD2  TIM3_ETR/UART5_RX SDIO_CMD */
-	{&gpiod,    NULL, NULL,   3, 0, ADCx} , /* PD3  FSMC_CLK */
-	{&gpiod,    NULL, NULL,   4, 0, ADCx} , /* PD4  FSMC_NOE */
-	{&gpiod,    NULL, NULL,   5, 0, ADCx} , /* PD5  FSMC_NWE */
-	{&gpiod,    NULL, NULL,   6, 0, ADCx} , /* PD6  FSMC_NWAIT */
-	{&gpiod,    NULL, NULL,   7, 0, ADCx} , /* PD7  FSMC_NE1/FSMC_NCE2 */
-	{&gpiod,    NULL, NULL,   8, 0, ADCx} , /* PD8  FSMC_D13 */
-	{&gpiod,    NULL, NULL,   9, 0, ADCx} , /* PD9  FSMC_D14 */
-	{&gpiod,    NULL, NULL,  10, 0, ADCx} , /* PD10  FSMC_D15 */
-	{&gpiod,    NULL, NULL,  11, 0, ADCx} , /* PD11  FSMC_A16 */
-	{&gpiod,    NULL, NULL,  12, 0, ADCx} , /* PD12  FSMC_A17 */
-	{&gpiod,    NULL, NULL,  13, 0, ADCx} , /* PD13  FSMC_A18 */	
-	{&gpiod,    NULL, NULL,  14, 0, ADCx} , /* PD14  FSMC_D0 */
-	{&gpiod,    NULL, NULL,  15, 0, ADCx} , /* PD15  FSMC_D1 */
+	{&gpiod,    NULL, NULL,   0, 0, ADCx}, /* PD0   OSC_IN */
+	{&gpiod,    NULL, NULL,   1, 0, ADCx}, /* PD1   OSC_OUT */
+	{&gpiod,    NULL, NULL,   2, 0, ADCx}, /* PD2   TIM3_ETR/UART5_RX SDIO_CMD */
+	{&gpiod,    NULL, NULL,   3, 0, ADCx}, /* PD3   FSMC_CLK */
+	{&gpiod,    NULL, NULL,   4, 0, ADCx}, /* PD4   FSMC_NOE */
+	{&gpiod,    NULL, NULL,   5, 0, ADCx}, /* PD5   FSMC_NWE */
+	{&gpiod,    NULL, NULL,   6, 0, ADCx}, /* PD6   FSMC_NWAIT */
+	{&gpiod,    NULL, NULL,   7, 0, ADCx}, /* PD7   FSMC_NE1/FSMC_NCE2 */
+	{&gpiod,    NULL, NULL,   8, 0, ADCx}, /* PD8   FSMC_D13 */
+	{&gpiod,    NULL, NULL,   9, 0, ADCx}, /* PD9   FSMC_D14 */
+	{&gpiod,    NULL, NULL,  10, 0, ADCx}, /* PD10  FSMC_D15 */
+	{&gpiod,    NULL, NULL,  11, 0, ADCx}, /* PD11  FSMC_A16 */
+	{&gpiod,    NULL, NULL,  12, 0, ADCx}, /* PD12  FSMC_A17 */
+	{&gpiod,    NULL, NULL,  13, 0, ADCx}, /* PD13  FSMC_A18 */	
+	{&gpiod,    NULL, NULL,  14, 0, ADCx}, /* PD14  FSMC_D0 */
+	{&gpiod,    NULL, NULL,  15, 0, ADCx}, /* PD15  FSMC_D1 */
 	
-	{&gpioe,    NULL, NULL,   0, 0, ADCx} , /* PE0  TIM4_ETR / FSMC_NBL0 */
-	{&gpioe,    NULL, NULL,   1, 0, ADCx} , /* PE1  FSMC_NBL1 */
-	{&gpioe,    NULL, NULL,   2, 0, ADCx} , /* PE2  TRACECK/ FSMC_A23 */
-	{&gpioe,    NULL, NULL,   3, 0, ADCx} , /* PE3  TRACED0/FSMC_A19 */
-	{&gpioe,    NULL, NULL,   4, 0, ADCx} , /* PE4  TRACED1/FSMC_A20 */
-	{&gpioe,    NULL, NULL,   5, 0, ADCx} , /* PE5  TRACED2/FSMC_A21 */
-	{&gpioe,    NULL, NULL,   6, 0, ADCx} , /* PE6  TRACED3/FSMC_A22 */
-	{&gpioe,    NULL, NULL,   7, 0, ADCx} , /* PE7  FSMC_D4 */
-	{&gpioe,    NULL, NULL,   8, 0, ADCx} , /* PE8  FSMC_D5 */
-	{&gpioe,    NULL, NULL,   9, 0, ADCx} , /* PE9  FSMC_D6 */
-	{&gpioe,    NULL, NULL,  10, 0, ADCx} , /* PE10 FSMC_D7 */
-	{&gpioe,    NULL, NULL,  11, 0, ADCx} , /* PE11 FSMC_D8 */
-	{&gpioe,    NULL, NULL,  12, 0, ADCx} , /* PE12 FSMC_D9 */
-	{&gpioe,    NULL, NULL,  13, 0, ADCx} , /* PE13 FSMC_D10 */	
-	{&gpioe,    NULL, NULL,  14, 0, ADCx} , /* PE14 FSMC_D11 */
-	{&gpioe,    NULL, NULL,  15, 0, ADCx} , /* PE15 FSMC_D12 */	
+	{&gpioe,    NULL, NULL,   0, 0, ADCx}, /* PE0   TIM4_ETR / FSMC_NBL0 */
+	{&gpioe,    NULL, NULL,   1, 0, ADCx}, /* PE1   FSMC_NBL1 */
+	{&gpioe,    NULL, NULL,   2, 0, ADCx}, /* PE2   TRACECK/ FSMC_A23 */
+	{&gpioe,    NULL, NULL,   3, 0, ADCx}, /* PE3   TRACED0/FSMC_A19 */
+	{&gpioe,    NULL, NULL,   4, 0, ADCx}, /* PE4   TRACED1/FSMC_A20 */
+	{&gpioe,    NULL, NULL,   5, 0, ADCx}, /* PE5   TRACED2/FSMC_A21 */
+	{&gpioe,    NULL, NULL,   6, 0, ADCx}, /* PE6   TRACED3/FSMC_A22 */
+	{&gpioe,    NULL, NULL,   7, 0, ADCx}, /* PE7   FSMC_D4 */
+	{&gpioe,    NULL, NULL,   8, 0, ADCx}, /* PE8   FSMC_D5 */
+	{&gpioe,    NULL, NULL,   9, 0, ADCx}, /* PE9   FSMC_D6 */
+	{&gpioe,    NULL, NULL,  10, 0, ADCx}, /* PE10  FSMC_D7 */
+	{&gpioe,    NULL, NULL,  11, 0, ADCx}, /* PE11  FSMC_D8 */
+	{&gpioe,    NULL, NULL,  12, 0, ADCx}, /* PE12  FSMC_D9 */
+	{&gpioe,    NULL, NULL,  13, 0, ADCx}, /* PE13  FSMC_D10 */	
+	{&gpioe,    NULL, NULL,  14, 0, ADCx}, /* PE14  FSMC_D11 */
+	{&gpioe,    NULL, NULL,  15, 0, ADCx}, /* PE15  FSMC_D12 */	
 	
 };
 
-/*  Basically everything that is defined as having a timer us PWM */
+/*  Basically everything that is defined as having a timer is PWM */
 extern const uint8 boardPWMPins[BOARD_NR_PWM_PINS] __FLASH__ = {
     PA0,PA1,PA2,PA3,PA6,PA7,PA8,PA9,PA10,PB0,PB1,PB6,PB7,PB8,PB9,PC6,PC7,PC8,PC9
 };
@@ -176,7 +176,7 @@ extern const uint8 boardADCPins[BOARD_NR_ADC_PINS] __FLASH__ = {
     PA0,PA1,PA2,PA3,PA4,PA5,PA6,PA7,PB0,PB1,PC0,PC1,PC2,PC3,PC4,PC5
 };
 
-/* not sure what this us used for */
+/* not sure what this is used for */
 extern const uint8 boardUsedPins[BOARD_NR_USED_PINS] __FLASH__ = {
     BOARD_LED_PIN, BOARD_BUTTON_PIN, BOARD_JTMS_SWDIO_PIN,
     BOARD_JTCK_SWCLK_PIN, BOARD_JTDI_PIN, BOARD_JTDO_PIN, BOARD_NJTRST_PIN
