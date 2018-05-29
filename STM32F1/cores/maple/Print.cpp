@@ -106,8 +106,8 @@ size_t Print::print(unsigned long long n, int base, int minDigits) {
 	return printNumber(n, base, minDigits);
 }
 
-size_t Print::print(double n, int minDigits) {
-    return printFloat(n, minDigits);
+size_t Print::print(double n, int digits) {
+    return printFloat(n, digits);
 }
 
 size_t Print::print(const __FlashStringHelper *ifsh)
@@ -188,8 +188,8 @@ size_t Print::println(unsigned long long n, int base, int minDigits) {
 	return s;
 }
 
-size_t Print::println(double n, int minDigits) {
-    size_t s = print(n, minDigits);
+size_t Print::println(double n, int digits) {
+    size_t s = print(n, digits);
     s += println();
 	return s;
 }
