@@ -30,7 +30,8 @@ compiler.objcopy.cmd=arm-none-eabi-objcopy
 compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0
 compiler.elf2hex.flags=-O binary
 compiler.elf2hex.cmd=arm-none-eabi-objcopy
-compiler.elf2other.cmd=mybatch.bat
+compiler.objdump.cmd=arm-none-eabi-objdump
+compiler.nm.cmd=arm-none-eabi-nm
 compiler.ldflags={build.flags.ldspecs}
 compiler.size.cmd=arm-none-eabi-size
 compiler.define=-DARDUINO=                            
@@ -97,8 +98,10 @@ recipe.objcopy.eep.pattern=
 ## Create hex
 recipe.objcopy.hex.pattern="{compiler.path}{compiler.elf2hex.cmd}" {compiler.elf2hex.flags} {compiler.elf2hex.extra_flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.bin"
 
-## My Recipe
-recipe.objcopy.other.pattern="{build.path}/../{compiler.elf2other.cmd}" "{compiler.path}" "{build.path}/{build.project_name}.elf"
+## Create output (.lst, .hdr and .sym files)
+recipe.objcopy.lst.pattern=cmd /c "{compiler.path}{compiler.objdump.cmd}" -h -S "{build.path}/{build.project_name}.elf" > "{build.path}/{build.project_name}.lst"
+recipe.objcopy.hdr.pattern=cmd /c "{compiler.path}{compiler.objdump.cmd}" -x "{build.path}/{build.project_name}.elf" > "{build.path}/{build.project_name}.hdr"
+recipe.objcopy.sym.pattern=cmd /c "{compiler.path}{compiler.nm.cmd}" -l -S --size-sort --reverse-sort "{build.path}/{build.project_name}.elf" > "{build.path}/{build.project_name}.sym"
 
 ## Compute size
 recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf"

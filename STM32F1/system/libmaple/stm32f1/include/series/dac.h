@@ -64,6 +64,27 @@ typedef struct dac_reg_map {
     __IO uint32 DOR2;    /**< Channel 2 data output register */
 } dac_reg_map;
 
+typedef enum dac_wave {
+	WAVE_DISABLED = 0b00 ,
+	WAVE_NOISE =    0b01 ,
+	WAVE_TRIANGLE = 0b10 ,
+} dac_wave;
+
+typedef enum dac_mamp {
+	MAMP_1     = 0b0000 ,
+	MAMP_3     = 0b0001 ,
+	MAMP_7     = 0b0010 ,
+	MAMP_15    = 0b0011 ,
+	MAMP_31    = 0b0100 ,
+	MAMP_63    = 0b0101 ,
+	MAMP_127   = 0b0110 ,
+	MAMP_255   = 0b0111 ,
+	MAMP_511   = 0b1000 ,
+	MAMP_1023  = 0b1001 ,
+	MAMP_2047  = 0b1010 ,
+	MAMP_4095  = 0b1011 ,
+} dac_mamp;
+
 #ifdef __cplusplus
 }
 #endif
